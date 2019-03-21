@@ -1,7 +1,14 @@
 class Api::ProfilesController < ApplicationController
   def index
-
-    url = "https://api.fortnitetracker.com/v1/profile/psn/x-pletive"
+    console = "psn"
+    username = "x-pletive"
+    if params[:console]
+      console = params[:console]
+    end
+    if params[:username]
+      username = params[:username]
+    end
+    url = "https://api.fortnitetracker.com/v1/profile/#{console}/#{username}"
 
     headers = {
          "TRN-Api-Key": "#{ENV["API_KEY"]}"
